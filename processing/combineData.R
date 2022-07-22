@@ -12,6 +12,7 @@ jsonFiles = jsonFiles[!grepl("template.json",jsonFiles)]
 # Loop through the files and combine them into a single data frame
 d = NULL
 for(jFile in jsonFiles){
+  print(jFile)
   jData = fromJSON(file = jFile)
   d = rbind(d, as.data.frame(jData))
 }

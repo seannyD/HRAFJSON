@@ -28,3 +28,10 @@ d$PolygamousMarriageName =
                     "no information"))
 latexTable = xtable(d[,c("Society","PolygamousMarriageName")],caption = "Summary of data")
 cat(print(latexTable), file="../results/latex/PolyTable.tex")
+
+# Plot the counts
+library(ggplot2)
+pdf("../results/PolyPlot.pdf", width=5,height=4)
+ggplot(d,aes(x=PolygamousMarriageName)) +
+  geom_bar()
+dev.off()
