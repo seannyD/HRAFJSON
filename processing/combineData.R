@@ -1,13 +1,20 @@
+# Set working directory
+#  (shouldn't be hard coded)
 try(setwd("~/OneDrive - Cardiff University/Conferences/EmberWorkshop/Live/GithubJSON/processing/"))
+
+# Load libraries
 library(rjson)
 
-jsonFiles = list.files("../data/json/",pattern = "*.json")
+# Find all the files in the "json" folder
+jsonFiles = list.files("../data/json/",pattern = "*.json",full.names = T)
 jsonFiles = jsonFiles[!grepl("template.json",jsonFiles)]
 
+# Loop through the files and combine them into a single data frame
 d = NULL
 for(jFile in jsonFiles){
-  jData = fromJSON(file = paste0("../data/json/",jFile))
+  jData = fromJSON(file = jFile)
   d = rbind(d, as.data.frame(jData))
 }
 
+# Write to a csv
 write.csv(d, "../data/csv/marriage.csv", row.names = F)
