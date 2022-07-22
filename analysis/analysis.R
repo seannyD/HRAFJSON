@@ -21,8 +21,9 @@ cat(perAbsent, file="../results/latex/perAbsent.tex")
 library(xtable)
 d$PolygamousMarriageName = 
   factor(d$PolygamousMarriage,
-         levels = c("1","2","3","8","9"),
+         levels = c("1","1.5","2","3","8","9"),
          labels = c("rare or never", 
+                    "Sven or never", 
                     "frequent but not typical", 
                     "typical","confusing", 
                     "no information"))
